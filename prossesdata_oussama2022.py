@@ -74,25 +74,25 @@ def process_image(img,kernels):
 
     # calculate air under zipf
 
-    oao_zipf = math.log10(freqs[0]) 
+    #oao_zipf = math.log10(freqs[0]) 
 
 
     rank_deleted_ones = rank[:freqs_deleted_ones.shape[0]]
     
-    air_zipf = np.sum((freqs_deleted_ones[:-1]+freqs_deleted_ones[1:])*(rank_deleted_ones[1:]-rank_deleted_ones[:-1])/2)
+    #air_zipf = np.sum((freqs_deleted_ones[:-1]+freqs_deleted_ones[1:])*(rank_deleted_ones[1:]-rank_deleted_ones[:-1])/2)
 
     # calculate zipf inverse
     
     u = np.log(freqs)
     v = np.log(nbr_freqs)
 
-    zi_pente,_ = np.polyfit(u,v,1)
+    #zi_pente,_ = np.polyfit(u,v,1)
 
-    oao_zipf_inv = math.log10(nbr_freqs[-1])
+    #oao_zipf_inv = math.log10(nbr_freqs[-1])
 
     # all zipf and zipf inverse features
     
-    zipf_features = np.array([pente, constante, entropy_1, entropy_2, oao_zipf, air_zipf, oao_zipf_inv, zi_pente],dtype=np.float32)
+    #zipf_features = np.array([pente, constante, entropy_1, entropy_2, oao_zipf, air_zipf, oao_zipf_inv, zi_pente],dtype=np.float32)
     
     #zipf_features = np.around(zipf_features,15)
     #print(zipf_features)
@@ -105,7 +105,7 @@ def process_image(img,kernels):
     
     gabor_features_data = gabor_features(img,kernels,32,32)
 
-    return np.concatenate([zipf_features, gabor_features_data])
+    return np.concatenate([ gabor_features_data])
     #return zipf_features
 
 
