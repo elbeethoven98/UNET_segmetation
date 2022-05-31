@@ -222,7 +222,7 @@ def main():
 
         img = np.array(Image.open(os.path.join(images_path,row+'.png')).convert('L'))
 
-        features = process_image(img,kernels)
+        features = gabor_features(img,kernels,32,32)
 
         data.append(features)
 
